@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'yaml'
+require_relative "../lib/import_export"
+
+client = ImportExport::Client.new
+results = client.search :q => ARGV[0]
+
+if results.empty?
+  puts "No results"
+  exit 0
+end
+
+results.each do |result|
+  puts result.name if result.name
+  puts result.remarks if result.remarks && !result.remarks.empty?
+  puts YAML.dump(result.data)
+  puts "\n"
+end
+
+exit 1
