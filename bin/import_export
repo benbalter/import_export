@@ -4,6 +4,11 @@ require 'bundler/setup'
 require 'yaml'
 require_relative "../lib/import_export"
 
+if ARGV[0].nil? || ARGV[0].empty?
+  puts "Usage: import_export [NAME]"
+  exit 1
+end
+
 client = ImportExport::Client.new
 results = client.search :q => ARGV[0]
 
