@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -ex
+
+DEBUG=1 bundle exec pry -r ./lib/import_export.rb
