@@ -1,5 +1,7 @@
 # ImportExport
 
+[![Gem Version](https://badge.fury.io/rb/import_export.svg)](http://badge.fury.io/rb/import_export) [![Build Status](https://travis-ci.org/benbalter/import_export.svg)](https://travis-ci.org/benbalter/import_export)
+
 A Ruby client for [Trade.gov's Consolidated Screening List](http://developer.trade.gov/consolidated-screening-list.html)
 
 ## Usage
