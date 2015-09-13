@@ -39,6 +39,12 @@ client.search :name => "smith", :fuzzy_name => true
 
 For more information, see [the Consolidated Screening List API docs](http://developer.trade.gov/consolidated-screening-list.html).
 
+### Command line usage
+
+```
+import_export [NAME]
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/consolidated_screening_list/fork )
