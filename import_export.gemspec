@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ben Balter"]
   spec.email         = ["ben.balter@github.com"]
   spec.summary       = "A Ruby client for Trade.gov's Consolidated Screening List"
-  spec.homepage      = "https://github.com/benbalter/impot_export"
+  spec.homepage      = "https://github.com/benbalter/import_export"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
