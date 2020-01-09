@@ -20,8 +20,7 @@ module ImportExport
       :fuzzy_name => false,
       :type       => nil,
       :size       => 100,
-      :offset     => 0,
-      :api_key    => nil,
+      :offset     => 0
     }
 
     TYPES = %w[
@@ -30,9 +29,10 @@ module ImportExport
       Vessel
     ]
 
-    def initialize(params)
+    def initialize(params, api_key)
       params = { :q => params } if params.is_a? String
       @params = PARAMETERS.merge(params)
+      @api_key = api_key
 
       if invalid = @params.find { |key,value| !PARAMETERS.keys.include?(key) }
         raise ArgumentError, "Invalid parameter: #{invalid[0]}"
@@ -45,11 +45,16 @@ module ImportExport
       if invalid = @params[:countries].find { |country| !Query.countries.include?(country) }
         raise ArgumentError, "Invalid country: #{invalid}"
       end
+
+      if invalid = !UUID.validate(api_key)
+        raise ArgumentError, "Invalid API key: #{invalid}"
+      end
     end
 
     def call
       RestClient.get Query.endpoint, {
         :params => params,
+        "Authorization" => "Bearer #{@api_key}",
         "User-Agent" => ImportExport.user_agent
       }
     end

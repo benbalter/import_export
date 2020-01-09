@@ -5,7 +5,7 @@ describe ImportExport::Source do
   subject { ImportExport::Source.all.first }
 
   it "returns all sources" do
-    expect(ImportExport::Source.all.count).to eql(11)
+    expect(ImportExport::Source.all.count).to eql(12)
   end
 
   it "returns a source by key" do
@@ -19,15 +19,15 @@ describe ImportExport::Source do
   end
 
   it "returns the keys" do
-    expect(ImportExport::Source.keys.count).to eql(11)
+    expect(ImportExport::Source.keys.count).to eql(12)
     expect(ImportExport::Source.keys.first).to eql(subject.key)
   end
 
   it "returns the key" do
-    expect(subject.key).to eql("DPL")
+    expect(subject.key).to eql("CAP")
   end
 
   it "returns the name" do
-    expect(subject.name).to eql("Denied Persons List")
+    expect(subject.name).to eql("Correspondent Account or Payable-Through Account Sanctions (CAPTA)")
   end
 end
