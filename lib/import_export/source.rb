@@ -2,17 +2,18 @@ module ImportExport
   class Source
 
     SOURCES = {
+      "CAP" => "Correspondent Account or Payable-Through Account Sanctions (CAPTA)",
       "DPL" => "Denied Persons List",
+      "DTC" => "ITAR Debarred",
       "EL"  => "Entity List",
       "FSE" => "Foreign Sanctions Evaders",
-      "DTC" => "ITAR Debarred",
-      "ISA" => "Non-SDN Iranian Sanctions Act List",
       "ISN" => "Nonproliferation Sanctions",
+      "PIB" => "Persons Identified as Blocked",
       "PLC" => "Palestinian Legislative Council List",
-      "561" => "Part 561 List",
-      "SSI" => "Sectoral Sanctions Identifications List",
       "SDN" => "Specially Designated Nationals",
-      "UVL" => "Unverified List"
+      "SSI" => "Sectoral Sanctions Identifications List",
+      "UVL" => "Unverified List",
+      "561" => "Part 561 List"
     }
 
     class << self

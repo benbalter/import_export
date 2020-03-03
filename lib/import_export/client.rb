@@ -18,8 +18,7 @@ module ImportExport
     end
 
     def search(params = {})
-      params = { :api_key => api_key }.merge(params)
-      parse_response Query.new(params).call
+      parse_response Query.new(params, api_key).call
     end
 
     private

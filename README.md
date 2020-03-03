@@ -1,8 +1,8 @@
 # ImportExport
 
-[![Gem Version](https://badge.fury.io/rb/import_export.svg)](http://badge.fury.io/rb/import_export) [![Build Status](https://travis-ci.org/benbalter/import_export.svg)](https://travis-ci.org/benbalter/import_export)
+[![Gem Version](https://badge.fury.io/rb/import_export.svg)](https://badge.fury.io/rb/import_export) [![Build Status](https://travis-ci.org/benbalter/import_export.svg)](https://travis-ci.org/benbalter/import_export)
 
-A Ruby client for [Trade.gov's Consolidated Screening List](http://developer.trade.gov/consolidated-screening-list.html)
+A Ruby client for [Trade.gov's Consolidated Screening List](https://developer.trade.gov/consolidated-screening-list.html)
 
 ## Usage
 
@@ -24,6 +24,8 @@ client.search :name => "smith", :fuzzy_name => true
 ]
 ```
 
+NOTE: `api_key` defaults to `ENV["TRADE_API_KEY"]` if not specified.
+
 ### Available parameters
 
 * `q`
@@ -35,9 +37,8 @@ client.search :name => "smith", :fuzzy_name => true
 * `type`
 * `size` (number of results per page, defaults to 100)
 * `offset` (defaults to 0)
-* `api_key` (defaults to ENV["TRADE_API_KEY"])
 
-For more information, see [the Consolidated Screening List API docs](http://developer.trade.gov/consolidated-screening-list.html).
+For more information, see [the Consolidated Screening List API docs](https://developer.trade.gov/consolidated-screening-list.html).
 
 ### Command line usage
 
