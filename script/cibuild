@@ -3,4 +3,5 @@
 set -ex
 
 bundle exec rake spec
+bundle exec rubocop
 bundle exec gem build import_export.gemspec

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module ImportExport
   class Result
-
     attr_reader :data
 
     def initialize(data)
@@ -12,7 +13,7 @@ module ImportExport
     end
 
     def method_missing(method_sym, *arguments, &block)
-      if data.has_key?(method_sym.to_s)
+      if data.key?(method_sym.to_s)
         data[method_sym.to_s]
       else
         super
@@ -20,7 +21,7 @@ module ImportExport
     end
 
     def respond_to?(method_sym, include_private = false)
-      if data.has_key?(method_sym.to_s)
+      if data.key?(method_sym.to_s)
         true
       else
         super

@@ -1,40 +1,41 @@
+# frozen_string_literal: true
+
 module ImportExport
   class Query
-
     class << self
       def countries
-        @countries ||= IsoCountryCodes.all.map { |c| c.alpha2 }
+        @countries ||= IsoCountryCodes.all.map(&:alpha2)
       end
 
       def endpoint
-        @endpoint ||= URI.join(ImportExport::API_BASE, "search").to_s
+        @endpoint ||= URI.join(ImportExport::API_BASE, 'search').to_s
       end
     end
 
     PARAMETERS = {
-      :q          => nil,
-      :sources    => Source.keys,
-      :countries  => Query.countries,
-      :address    => nil,
-      :name       => nil,
-      :fuzzy_name => false,
-      :type       => nil,
-      :size       => 100,
-      :offset     => 0
-    }
+      q: nil,
+      sources: Source.keys,
+      countries: Query.countries,
+      address: nil,
+      name: nil,
+      fuzzy_name: false,
+      type: nil,
+      size: 100,
+      offset: 0
+    }.freeze
 
     TYPES = %w[
       Individual
       Entity
       Vessel
-    ]
+    ].freeze
 
     def initialize(params, api_key)
-      params = { :q => params } if params.is_a? String
+      params = { q: params } if params.is_a? String
       @params = PARAMETERS.merge(params)
       @api_key = api_key
 
-      if invalid = @params.find { |key,value| !PARAMETERS.keys.include?(key) }
+      if invalid = @params.find { |key, _value| !PARAMETERS.key?(key) }
         raise ArgumentError, "Invalid parameter: #{invalid[0]}"
       end
 
@@ -54,8 +55,8 @@ module ImportExport
     def call
       RestClient.get Query.endpoint, {
         :params => params,
-        "Authorization" => "Bearer #{@api_key}",
-        "User-Agent" => ImportExport.user_agent
+        'Authorization' => "Bearer #{@api_key}",
+        'User-Agent' => ImportExport.user_agent
       }
     end
 
@@ -63,9 +64,9 @@ module ImportExport
 
     def params
       params = @params.clone
-      params[:countries] = params[:countries].join(",")
-      params[:sources]   = params[:sources].join(",")
-      params.reject { |k,v| v.nil? }
+      params[:countries] = params[:countries].join(',')
+      params[:sources]   = params[:sources].join(',')
+      params.reject { |_k, v| v.nil? }
     end
   end
 end

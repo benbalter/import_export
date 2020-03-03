@@ -1,19 +1,20 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'bundler/setup'
 require 'yaml'
-require_relative "../lib/import_export"
+require_relative '../lib/import_export'
 
 if ARGV[0].nil? || ARGV[0].empty?
-  puts "Usage: import_export [NAME]"
+  puts 'Usage: import_export [NAME]'
   exit 1
 end
 
 client = ImportExport::Client.new
-results = client.search :q => ARGV[0]
+results = client.search q: ARGV[0]
 
 if results.empty?
-  puts "No results"
+  puts 'No results'
   exit 0
 end
 
